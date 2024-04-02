@@ -1,4 +1,3 @@
-// webpack.config.js
 const path = require('path');
 
 module.exports = {
@@ -27,6 +26,16 @@ module.exports = {
           'css-loader',    // Translates CSS into CommonJS
           'sass-loader'    // Compiles Sass to CSS
         ],
+      },
+      {
+        test: /\.svg$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: '../Images', // Output directory for SVG files
+          },
+        },
       },
     ],
   },
