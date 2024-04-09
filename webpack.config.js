@@ -37,6 +37,14 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',  // Adds CSS to the DOM by injecting a `<style>` tag
+          'css-loader',    // Translates CSS into CommonJS
+          'sass-loader'    // Compiles Sass to CSS
+        ],
+      },
     ],
   },
   externals: {
