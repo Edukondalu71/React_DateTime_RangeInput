@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import "./DateTimeRangeInput.scss";
+import "../../DropdownPopup.scss";
 import CalenderPopUpScreen from './CalenderPopUpScreen';
-import { Modal } from 'react-bootstrap';
+// import { Modal } from 'react-bootstrap';
 import { InputCalenderDataType } from './PropsTypes';
 import { exptectedDateFormat } from './Utils';
 
@@ -12,10 +13,10 @@ const InputCalenderPopUp = ({ updateStartDate, value, keyName, minDate, maxDate 
   const [tempselectedDate, setTempSelectedDate] = useState<any>("");
 
   useEffect(() => {
-    if(keyName === "endDate" && value === "") {
+    if (keyName === "endDate" && value === "") {
       setInputValue("");
       setTempSelectedDate("");
-    }else {
+    } else {
       let selectedDate = new Date(value);
       let formattedDate = exptectedDateFormat(selectedDate.toLocaleString('en-US', { timeZone: 'UTC' }));
       selectedDate.setHours(selectedDate.getHours() - 5);
@@ -38,12 +39,22 @@ const InputCalenderPopUp = ({ updateStartDate, value, keyName, minDate, maxDate 
 
 
   return (
-    <div className='dateRangeModel'>
-      <Modal show={popUpState} centered backdrop={"static"} className='dateSpecific'>
-        <CalenderPopUpScreen keyName={keyName} selectedDate={tempselectedDate} min={minDate} max={maxDate} updateInput={updateInputValue} closePopUp={closeCalenderPopUpScreen} />
-      </Modal>
+    <div className="dropdown-popup">
       <input onClick={() => setPopUpState(true)} placeholder={` Select ${keyName === "startDate" ? "start date" : "end date"}`} className="current-date" value={inputValue} />
+      {popUpState && (
+        <div className="dropdown-content">
+          <CalenderPopUpScreen keyName={keyName} selectedDate={tempselectedDate} min={minDate} max={maxDate} updateInput={updateInputValue} closePopUp={closeCalenderPopUpScreen} />
+        </div>
+      )}
     </div>
+
+
+    // <div className='dateRangeModel'>
+    //   {/* <Modal show={popUpState} centered backdrop={"static"} className='dateSpecific'> */}
+    //     <CalenderPopUpScreen keyName={keyName} selectedDate={tempselectedDate} min={minDate} max={maxDate} updateInput={updateInputValue} closePopUp={closeCalenderPopUpScreen} />
+    //   {/* </Modal> */}
+    //   <input onClick={() => setPopUpState(true)} placeholder={` Select ${keyName === "startDate" ? "start date" : "end date"}`} className="current-date" value={inputValue} />
+    // </div>
   )
 }
 

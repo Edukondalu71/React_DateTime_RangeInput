@@ -21,6 +21,10 @@ module.exports = {
         },
       },
       {
+        test: /\.svg$/,
+        use: ['svg-url-loader'],
+      },
+      {
         test: /\.scss$/,
         use: [
           'style-loader',  // Adds CSS to the DOM by injecting a `<style>` tag

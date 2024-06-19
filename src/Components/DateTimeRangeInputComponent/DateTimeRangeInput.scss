@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 300px;
   .cardContainer{
     box-shadow: 0 15px 40px rgba(49, 48, 48, 0.12);
     background-color: #FFFFFF;
@@ -161,21 +162,26 @@
 
 .dateTimeInputContainer {
   display: flex;
-  width: 80%;
-  flex-direction: row;
-  border: 1px solid #000000;
+  width: 300px;
+  flex-direction: column;
+  // border: 1px solid #000000;
   margin: 0;
   padding: 2px;
   border-radius: 3px;
   background-color: #FFFFFF;
   div{
-    width: 48%;
+    width: 300px;
     input {
       color: #FFFFFF;
       color: #000000;
       font-weight: 500;
       font-size: 0.8rem;
+      border: 1px solid #000000;
       cursor: pointer;
+      border-radius: 3px;
+      margin: 10px;
+      padding: 5px;
+      text-align: center;
     }
   }
   //align-items: center;

@@ -33,7 +33,7 @@ const DateTimeRangeInputComponent = ({dateRangeValue, callBackDateRange}:any) =>
 
   return (
     <div className="dateTimeInputContainer">
-      <InputCalenderPopUp updateStartDate={updateDateRange} value={dateRange.startDate} keyName={"startDate"} minDate={`1996-01-01T00:00`} maxDate={getMinMaxDate("")}  /> {"- "}
+      <InputCalenderPopUp updateStartDate={updateDateRange} value={dateRange.startDate} keyName={"startDate"} minDate={`1996-01-01T00:00`} maxDate={getMinMaxDate("")}  />
       <InputCalenderPopUp updateStartDate={updateDateRange} value={dateRange.endDate} keyName={"endDate"} minDate={getMinMaxDate(startDate)} maxDate={getMinMaxDate("")}  />
     </div>
   );

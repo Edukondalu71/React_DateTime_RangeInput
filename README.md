@@ -21,16 +21,13 @@ Install the package using npm:
   npm i react-datetimerangeinput
 ```
 
-<!-- Embedding a Gist -->
-## NOTE : for pop styles you need to use bootstrap
-
 
 ```javascript
-  import DateTimeRangeInputComponent from react-datetimerangeinput;
+  import DateTimeRangeInputComponent from 'react-datetimerangeinput';
   function App() {
     const [dateRange, setDateRange] = useState({startDate: new Date(), endDate: new Date()});
-    const updateDateRange = (key:string, value:any) => {
-    setDateRange((prevDateRange:any) => ({
+    const updateDateRange = (key:string, value:object) => {
+    setDateRange((prevDateRange:object) => ({
       ...prevDateRange,
      [key] : value
     }));
@@ -45,12 +42,6 @@ Install the package using npm:
 }
 ```
 
-<!-- ```markdown
-![View Sample Code](/src/App.tsx);
-![View Sample Code](/src/Components/Images/SampleImage.png);
-``` -->
+This is a sample image:
 
-
-
-
-
+![Sample Image](./src/Components/Images/SampleImage.png);
