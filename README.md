@@ -26,8 +26,8 @@ Install the package using npm:
   import DateTimeRangeInputComponent from 'react-datetimerangeinput';
   function App() {
     const [dateRange, setDateRange] = useState({startDate: new Date(), endDate: new Date()});
-    const updateDateRange = (key:string, value:any) => {
-    setDateRange((prevDateRange:any) => ({
+    const updateDateRange = (key:string, value:object) => {
+    setDateRange((prevDateRange:object) => ({
       ...prevDateRange,
      [key] : value
     }));

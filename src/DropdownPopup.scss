@@ -1,0 +1,21 @@
+.dropdown-popup {
+  position: relative;
+  display: inline-block;
+
+  .dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 30px;
+    /* Adjust as needed */
+    right: 0;
+
+    /* Adjust as needed */
+    .dropdown-content p {
+      padding: 10px;
+      margin: 0;
+    }
+  }
+}
