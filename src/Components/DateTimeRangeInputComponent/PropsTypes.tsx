@@ -1,18 +1,21 @@
+import { CSSProperties } from "react";
+
 type CalenderPopUpScreenDataTypes = {
     closePopUp:() => void;
     updateInput:(arg:any) => void;
-    min:string;
-    max:string;
+    min:String;
+    max:String;
     selectedDate:any
-    keyName:string
+    keyName:String
 }
 
 type InputCalenderDataType = {
-    value:string;
-    minDate:string;
-    maxDate:string;
-    updateStartDate:(arg:string, value:string) => void;
-    keyName:string
+    value:String | Date | any;
+    minDate:String;
+    maxDate:String;
+    updateStartDate:(arg:String, value:String) => void;
+    keyName:String;
+    inputStyle: CSSProperties
 }
 
 

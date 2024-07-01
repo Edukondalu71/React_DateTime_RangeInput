@@ -6,13 +6,14 @@ import CalenderPopUpScreen from './CalenderPopUpScreen';
 import { InputCalenderDataType } from './PropsTypes';
 import { exptectedDateFormat } from './Utils';
 
-const InputCalenderPopUp = ({ updateStartDate, value, keyName, minDate, maxDate }: InputCalenderDataType) => {
+const InputCalenderPopUp = ({ updateStartDate, value, keyName, minDate, maxDate, inputStyle }: InputCalenderDataType) => {
   const [popUpState, setPopUpState] = useState(false);
   const closeCalenderPopUpScreen = () => setPopUpState(false);
   const [inputValue, setInputValue] = useState<any>("");
   const [tempselectedDate, setTempSelectedDate] = useState<any>("");
 
   useEffect(() => {
+    setPopUpState(false);
     if (keyName === "endDate" && value === "") {
       setInputValue("");
       setTempSelectedDate("");
@@ -39,8 +40,8 @@ const InputCalenderPopUp = ({ updateStartDate, value, keyName, minDate, maxDate 
 
 
   return (
-    <div className="dropdown-popup">
-      <input onClick={() => setPopUpState(true)} placeholder={` Select ${keyName === "startDate" ? "start date" : "end date"}`} className="current-date" value={inputValue} />
+    <div className="dropdown-popup" >
+      <input style={inputStyle} onClick={() => setPopUpState(true)} placeholder={` Select ${keyName === "startDate" ? "start date" : "end date"}`} className="current-date" value={inputValue} />
       {popUpState && (
         <div className="dropdown-content">
           <CalenderPopUpScreen keyName={keyName} selectedDate={tempselectedDate} min={minDate} max={maxDate} updateInput={updateInputValue} closePopUp={closeCalenderPopUpScreen} />

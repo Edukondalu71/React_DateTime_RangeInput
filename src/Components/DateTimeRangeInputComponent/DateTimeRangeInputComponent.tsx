@@ -1,26 +1,34 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { useEffect, useState } from "react";
 import "./DateTimeRangeInput.scss";
 import InputCalenderPopUp from "./InputCalenderPopUp";
-import { get365DaysAgo, getMinMaxDate } from "./Utils";
+import { getMinMaxDate } from "./Utils";
+
+interface Props {
+  dateRangeValue: {
+    startDate: Date | String,
+    endDate:Date | String
+  },
+  callBackDateRange:(arg:String, arg2:number) => void,
+  styles:CSSProperties,
+  inputStyle:CSSProperties
+}
+
+interface DateType {
+  startDate: Date | String,
+  endDate:Date | String
+}
 
 
-const DateTimeRangeInputComponent = ({dateRangeValue, callBackDateRange}:any) => {
-  const [dateRange, setDateRange] = useState({
+const DateTimeRangeInput = ({dateRangeValue, callBackDateRange, styles, inputStyle}:Props) => {
+  const [dateRange, setDateRange] = useState<DateType>({
     startDate: dateRangeValue.startDate,
     endDate: dateRangeValue.endDate
   });
 
-  // useEffect(() => {
-  //   setDateRange((prev) => ({
-  //     ...prev,
-  //     endDate: dateRangeValue.endDate
-  //   }))
-  // }, [dateRangeValue]);
-
   const [startDate, setStartDate] = useState(dateRangeValue.startDate);
 
-  const updateDateRange = (state:string, value:any) => {
+  const updateDateRange = (state:any, value:any) => {
     let selectedDate = new Date(value);
     selectedDate.setHours(selectedDate.getHours() - 5);
     selectedDate.setMinutes(selectedDate.getMinutes() - 30);
@@ -32,12 +40,12 @@ const DateTimeRangeInputComponent = ({dateRangeValue, callBackDateRange}:any) =>
   }
 
   return (
-    <div className="dateTimeInputContainer">
-      <InputCalenderPopUp updateStartDate={updateDateRange} value={dateRange.startDate} keyName={"startDate"} minDate={`1996-01-01T00:00`} maxDate={getMinMaxDate("")}  />
-      <InputCalenderPopUp updateStartDate={updateDateRange} value={dateRange.endDate} keyName={"endDate"} minDate={getMinMaxDate(startDate)} maxDate={getMinMaxDate("")}  />
+    <div className="dateTimeInputContainer" style={styles}>
+      <InputCalenderPopUp inputStyle={inputStyle} updateStartDate={updateDateRange} value={dateRange.startDate} keyName={"startDate"} minDate={`1996-01-01T00:00`} maxDate={getMinMaxDate("")}  />
+      <InputCalenderPopUp inputStyle ={inputStyle} updateStartDate={updateDateRange} value={dateRange.endDate} keyName={"endDate"} minDate={getMinMaxDate(startDate)} maxDate={getMinMaxDate("")}  />
     </div>
   );
 };
 
-export default DateTimeRangeInputComponent;
+export default DateTimeRangeInput;
 

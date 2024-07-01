@@ -1,16 +1,30 @@
 import React, { useState } from 'react';
 import './App.css';
-import DateTimeRangeInputComponent from './Components/DateTimeRangeInputComponent/DateTimeRangeInputComponent';
+import DateTimeRangeInput from './Components/DateTimeRangeInputComponent/DateTimeRangeInputComponent';
 
 function App() {
   const [dateRange, setDateRange] = useState({ startDate: new Date(), endDate: new Date() });
-  const updateDateRange = (key: string, value: any) => {
+  const updateDateRange = (key: any, value: Date | Number | String) => {
     setDateRange((prevDateRange: any) => ({
       ...prevDateRange,
       [key]: value
     }));
   }
-  return <DateTimeRangeInputComponent dateRangeValue={dateRange} callBackDateRange={updateDateRange} />
+  return (
+    <DateTimeRangeInput
+      dateRangeValue={dateRange}
+      callBackDateRange={updateDateRange}
+      styles={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center'
+      }}
+      inputStyle={{ 
+        border: '2px solid #000000', 
+        width: '600px' 
+      }}
+      />
+  )
 }
 
 export default App;

@@ -1,6 +1,6 @@
 {
   "name": "react-datetimerangeinput",
-  "version": "0.1.22",
+  "version": "0.1.24",
   "private": false,
   "main": "dist/index.js",
   "description": "React Date Time Input",
@@ -8,6 +8,8 @@
     "type": "git",
     "url": "https://github.com/Edukondalu71/React_DateTime_RangeInput"
   },
+  "author": "Edukondalu",
+  "license": "MIT",
   "keywords": ["React Date Time", "Date Time Input", "Date Input"],
   "dependencies": {
     "css-loader": "^6.9.1",

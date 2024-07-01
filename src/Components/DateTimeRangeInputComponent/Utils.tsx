@@ -32,7 +32,7 @@ const convertIntoDateObject =(dateString:any, state:any) => {
       return new Date(selectedDate);
   }
 
-const getMinMaxDate = (date:string) => {
+const getMinMaxDate = (date:String| Date | any) => {
     let inputDate = date === "" ? new Date() : new Date(date);
     const year = inputDate.getFullYear();
     const month = String(inputDate.getMonth() + 1).padStart(2, "0");
@@ -75,7 +75,7 @@ const renderCalendar = (currYear:number, currMonth:number, min:any) => {
     return newDays;
 }
 
-const renderHrsMns = (currYear:number, currMonth:number, selectedDay:number, state:string) => {
+const renderHrsMns = (currYear:number, currMonth:number, selectedDay:number, state:String) => {
     let checkDate = checkIsToday(currYear, currMonth, selectedDay);
     let hrsList = [0];
     let currentHour = checkDate ? (state==="AM" ? (11 < new Date().getHours() ? 11 : new Date().getHours()) :  new Date().getHours()-12) : 11;
@@ -83,12 +83,12 @@ const renderHrsMns = (currYear:number, currMonth:number, selectedDay:number, sta
     return  hrsList;
 }
 
-const checkActualDateTime = (hour:number, state:string) => {
+const checkActualDateTime = (hour:number, state:String) => {
    let actualHour = state === "PM" ? (hour < 12 ? (hour === 12 ? hour + 1 : hour + 12) : hour) : hour ;
    return actualHour;
 }
 
-const renderMns = (currYear:number, currMonth:number, selectedDay:number,selectedHour:number, state:string) => {
+const renderMns = (currYear:number, currMonth:number, selectedDay:number,selectedHour:number, state:String) => {
     let checkDate = checkIsToday(currYear, currMonth, selectedDay);
     let currentMins = checkDate ? (checkActualDateTime(selectedHour, state) === new Date().getHours() ? new Date().getMinutes() : 59) : 59 
     let minsList = [];
@@ -101,7 +101,7 @@ const convertedIntoTwoDecimalNumber = (value:any) => {
     else return value
 }
 
-const checkDisplayTime = (day:number, state:string) => {
+const checkDisplayTime = (day:number, state:String) => {
     return day === 0 ?  12 : day ;
 }
 
